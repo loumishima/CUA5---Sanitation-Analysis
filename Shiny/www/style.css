@@ -1,0 +1,105 @@
+body, label, input, button, select { 
+  font-family: 'Helvetica Neue', Helvetica;
+  font-weight: 200;
+}
+
+#logo {
+  width: 150px;
+  height: 66px;
+  margin-right: 50px;
+  margin-top: 7px;
+}
+
+#logo2 {
+  width: 66px;
+  height: 66px;
+  margin-right: 50px;
+  margin-top: 7px;
+  margin-bottom: 5px;
+  
+}
+.navbar {
+  background-color: #B10048;
+  color: white;
+}
+
+.navbar .container-fluid > ul, .navbar .container-fluid .navbar-header{
+  margin-top:10px;
+}
+
+.navbar-default {
+  background-color: #B10048 ;
+}
+
+.navbar-static-top {
+  background-color: #B10048 ;
+}
+
+navbar-header{
+  color : white;
+}
+
+h1 {
+  font-family: 'Helvetica Neue', Helvetica;
+  text-align: center;
+  color: #B10048;
+}
+    
+#controls {
+  opacity:0.65;
+  padding: 0 20px 20px 20px;
+}
+
+#controls:hover {
+  opacity: 0.95;
+}
+
+#waste {
+  opacity:0.65;
+  padding: 20px 20px 20px 20px ;
+}
+
+#waste:hover {
+  opacity: 0.95;
+}
+
+.irs-bar {
+  width: 100%; background-color: #B10048;
+  border-color:#B10048;
+  
+}
+.irs-bar-edge {
+  background-color: #B10048;
+  border-color:#B10048;
+  
+}
+.irs-grid-text {
+  font-family: 'Roman'
+  
+}
+.irs-single {
+  background-color:#B10048;
+  
+}
+      
+.navbar-default .navbar-header .navbar-brand {
+    color: white
+}
+
+.navbar-default .navbar-nav > li > a  {
+    color: white
+}
+
+#occ-detail, #m3-detail{
+  background-color:#B10048;
+}
+
+.tabs-above > .nav > li > a {
+  
+  color: "red";
+}
+            
+            
+            
+            
+            
