@@ -13,30 +13,29 @@ library(shinyjs)
 library(viridis)
 library(shinycssloaders)
 
-setwd("/Users/gather3/Documents/Madagascar/Shiny")
 source('server_modules.R')
 source('functions.R')
 
-df <- read.csv("/Users/gather3/Documents/Madagascar/inputs/Risk_Toilets_Final.csv")
+df <- read.csv("Risk_Toilets_Final.csv")
 
 # CUA5
-CUA5 <- readOGR("/Users/gather3/Documents/Madagascar/Shapefiles/CUA5.shp",GDAL1_integer64_policy = TRUE)
+CUA5 <- readOGR("Shapefiles/CUA5.shp",GDAL1_integer64_policy = TRUE)
 CUA5 <- spTransform(CUA5, CRS("+proj=longlat +datum=WGS84 +no_defs"))
 
 # CUA5 Population
-CUA5_Pop <- readOGR("/Users/gather3/Documents/Madagascar/Shapefiles/POP-CUA5.shp",GDAL1_integer64_policy = TRUE)
+CUA5_Pop <- readOGR("Shapefiles/POP-CUA5.shp",GDAL1_integer64_policy = TRUE)
 CUA5_Pop <- spTransform(CUA5_Pop, CRS("+proj=longlat +datum=WGS84 +no_defs"))
 
 # CUA5 Roads
-CUA5_Roads <- readOGR("/Users/gather3/Documents/Madagascar/Shapefiles/CUA5-Roads.shp",GDAL1_integer64_policy = FALSE)
+CUA5_Roads <- readOGR("Shapefiles/CUA5-Roads.shp",GDAL1_integer64_policy = FALSE)
 CUA5_Roads <- spTransform(CUA5_Roads, CRS("+proj=longlat +datum=WGS84 +no_defs"))
 
 # CUA5 Rivers
-CUA5_Rivers <- readOGR("/Users/gather3/Documents/Madagascar/Shapefiles/CUA5-River.shp",GDAL1_integer64_policy = TRUE)
+CUA5_Rivers <- readOGR("Shapefiles/CUA5-River.shp",GDAL1_integer64_policy = TRUE)
 CUA5_Rivers <- spTransform(CUA5_Rivers, CRS("+proj=longlat +datum=WGS84 +no_defs"))
 
 # CUA5 Risk
-CUA5_Risk <- readOGR("/Users/gather3/Documents/Madagascar/Shapefiles/Final_Risk.shp",GDAL1_integer64_policy = TRUE)
+CUA5_Risk <- readOGR("Shapefiles/Final_Risk.shp",GDAL1_integer64_policy = TRUE)
 CUA5_Risk<- spTransform(CUA5_Risk, CRS("+proj=longlat +datum=WGS84 +no_defs"))
 
 

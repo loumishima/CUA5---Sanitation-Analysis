@@ -1,0 +1,10 @@
+name: shiny
+title:
+username:
+account: gatherhub
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 859842
+bundleId: 2458478
+url: https://gatherhub.shinyapps.io/shiny/
+when: 1569926147.68441
