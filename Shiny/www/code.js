@@ -1,4 +1,4 @@
 $( document ).ready(function() {
-  $(' <img src="3-3.png" align="right"  id = "logo">' ).insertBefore( ".navbar .container-fluid"  );
+  $('<a href="http://www.gatherhub.org"><img src="3-3.png" align="right"  id = "logo"></a>' ).insertBefore( ".navbar .container-fluid"  );
   
 });

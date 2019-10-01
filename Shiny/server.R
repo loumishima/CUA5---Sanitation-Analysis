@@ -73,7 +73,7 @@ server <- function(input, output, session) {
   })
 
   bins <- c(592, 3399, 6111, 10025, 27272, 113693)
-  pal_risk <- colorBin("RdYlGn", domain = CUA5_Risk$FInal_RISK, bins = bins, na.color = "#FFFFFF00" )
+  pal_risk <- colorBin("RdYlGn", domain = CUA5_Risk$FInal_RISK, bins = bins, na.color = "#FFFFFF00", reverse = T )
   bins <- c(0, 30, 65, 104, 334, 2116)
   pal_pop <- colorBin("PuRd", domain = CUA5_Pop$Pop_Densit, bins = bins)
   bins <- c(2009, 5972, 7130, 8674, 9913, 12920)
