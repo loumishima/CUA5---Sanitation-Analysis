@@ -26,7 +26,7 @@ ui <- tagList(
                                     width = 330, height = 600,
                                     #Stats on the side
                                     h1("Sanitation Risk"),
-                                    p(lorem_ipsum))
+                                    p("The Sanitation Risk expresses the danger of disease spreading t..."))
                                   
                                   
                       
@@ -38,7 +38,7 @@ ui <- tagList(
                                     draggable = F, top =140, left = "auto", right = 20, bottom = "auto",
                                     width = 330, height = 600,
                                     h1("Toilet Location"),
-                                    p(lorem_ipsum))
+                                    p("The map shows how the sample data have placed the toilets along the CUA 5 area, ..."))
                       
                         
              ),
