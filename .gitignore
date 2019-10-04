@@ -1,2 +1,8 @@
 
 *.csv
+
+Shiny/.DS_Store
+
+Shiny/.Rhistory
+
+Shiny/rsconnect/shinyapps.io/gatherhub/Sanitation_risk.dcf
