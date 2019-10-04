@@ -62,6 +62,9 @@ server <- function(input, output, session) {
     leaflet(data = df) %>% addProviderTiles(providers$Esri.WorldTopoMap) %>% 
       addAwesomeMarkers(lng = ~longitude,
                        lat = ~latitude,
+                       popup = paste("Capacity:", "<b>", df$capacity, "</b><br>",
+                                     "People using toilet:","<b>", round(df$people_usi, 0), "</b><br>",
+                                     "Last cleaned (in days):","<b>" ,round(df$last_clean,0), "</b>"),
                        popupOptions = popupOptions(closeOnClick = T),
                 
                        icon = icons) %>% 
@@ -90,7 +93,7 @@ server <- function(input, output, session) {
                    fillColor = "Blue") %>% 
       addPolygons(fillColor = ~pal_risk(FInal_RISK), color = "#444444", weight = 1, smoothFactor = 0.5,
                   opacity = 0.1, fillOpacity = 0.9,
-                  label = HTML_labels(CUA5_Risk$FInal_RISK),
+                  label = HTML_labels(CUA5_Risk$FInal_RISK, text = ""),
                   highlightOptions = highlightOptions(
                     weight = 5,
                     color = "#666",
@@ -187,8 +190,14 @@ server <- function(input, output, session) {
                   )
   })
   
-  
-  
-  
-  
+  output$updates <- renderUI(HTML("<ul>
+  <li>04/10/2019 - Added the final texts and toilets individual informations</li>
+  <li>02/10/2019 - Change the sample toilets for a best adaptation to the new borders</li>
+  <li> 02/10/2019 - Added a new CUA5 shapefile based on an official source</li>
+  <li>11/09/2019 - Created the first interactive version</li>
+                                  </ul>"))
+
 }
+
+# When ready to deploy:
+#rsconnect::deployApp(appTitle = "Sanitation_risk" , appName = "Sanitation_risk")
