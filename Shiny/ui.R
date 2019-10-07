@@ -81,7 +81,7 @@ ui <- tagList(
              ),
              
              tabPanel("Technical Details", value = 5,
-                      textOutput(outputId = "details")),
+                      tags$iframe(class = 'leaflet-container', style="height:400px; width:100%; scrolling=yes", src="Appendix - Moving toward predictive, geospatial analytics for urban sanitation.pdf")),
              tabPanel("Updates", value = 6,
                       fluidRow( class = "updateTitle",
                         column(4, "Major app updates", div(style = "height:30px;"), offset = 4)

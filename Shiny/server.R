@@ -62,7 +62,7 @@ server <- function(input, output, session) {
     leaflet(data = df) %>% addProviderTiles(providers$Esri.WorldTopoMap) %>% 
       addAwesomeMarkers(lng = ~longitude,
                        lat = ~latitude,
-                       popup = paste("Capacity:", "<b>", df$capacity, "</b><br>",
+                       popup = paste("Capacity:", "<b>", df$capacity, "m³</b><br>",
                                      "People using toilet:","<b>", round(df$people_usi, 0), "</b><br>",
                                      "Last cleaned (in days):","<b>" ,round(df$last_clean,0), "</b>"),
                        popupOptions = popupOptions(closeOnClick = T),
