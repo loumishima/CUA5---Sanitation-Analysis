@@ -59,7 +59,9 @@ server <- function(input, output, session) {
       library = 'fa',
       markerColor = "darkred"
     )
-    leaflet(data = df) %>% addProviderTiles(providers$Esri.WorldTopoMap) %>% 
+    leaflet(data = df) %>%
+      addProviderTiles(providers$Esri.WorldTopoMap, group = "Street Map (Default)") %>% 
+      addProviderTiles(providers$Esri.WorldImagery, group = "Satellite Map") %>% 
       addAwesomeMarkers(lng = ~longitude,
                        lat = ~latitude,
                        popup = paste("Capacity:", "<b>", df$capacity, "m³</b><br>",
@@ -70,7 +72,12 @@ server <- function(input, output, session) {
                        icon = icons) %>% 
       addPolylines(data = CUA5, color = "Black", weight = 1, smoothFactor = 0.5,
                    opacity = 1.0, fillOpacity = 1, dashArray ="4 2 3",
-                   fillColor = "Blue")
+                   fillColor = "Blue")  %>% 
+      addLayersControl(
+        baseGroups = c("Street Map (Default)", "Satellite Map"),
+        position = 'bottomleft',
+        options = layersControlOptions(collapsed = TRUE)
+      )
     
     
   })
@@ -87,12 +94,14 @@ server <- function(input, output, session) {
   
   output$risk <- renderLeaflet({
     
-    leaflet(data = CUA5_Risk) %>% addProviderTiles(providers$Esri.WorldTopoMap) %>% 
+    leaflet(data = CUA5_Risk) %>% 
+      addProviderTiles(providers$Esri.WorldTopoMap, group = "Street Map (Default)") %>% 
+      addProviderTiles(providers$Esri.WorldImagery, group = "Satellite Map") %>% 
       addPolylines(data = CUA5, color = "Black", weight = 3, smoothFactor = 0.5,
                    opacity = 1.0, fillOpacity = 1, dashArray ="4 6 2",
                    fillColor = "Blue") %>% 
       addPolygons(fillColor = ~pal_risk(FInal_RISK), color = "#444444", weight = 1, smoothFactor = 0.5,
-                  opacity = 0.1, fillOpacity = 0.9,
+                  opacity = 0.1, fillOpacity = 0.6,
                   label = HTML_labels(CUA5_Risk$FInal_RISK, text = ""),
                   highlightOptions = highlightOptions(
                     weight = 5,
@@ -104,17 +113,24 @@ server <- function(input, output, session) {
                 pal = pal_risk,
                 na.label = "Not Available",
                 labels = c("Very low", "Low", "Medium", "High", "Very high")
+      ) %>% 
+      addLayersControl(
+        baseGroups = c("Street Map (Default)", "Satellite Map"),
+        position = 'bottomleft',
+        options = layersControlOptions(collapsed = TRUE)
       )
   })
   
   output$risk_w_pop <- renderLeaflet({
     
-    leaflet(data = CUA5_Pop) %>% addProviderTiles(providers$Esri.WorldTopoMap) %>% 
+    leaflet(data = CUA5_Pop) %>% 
+      addProviderTiles(providers$Esri.WorldTopoMap, group = "Street Map (Default)") %>% 
+      addProviderTiles(providers$Esri.WorldImagery, group = "Satellite Map") %>% 
       addPolylines(data = CUA5, color = "Black", weight = 3, smoothFactor = 0.5,
                    opacity = 1.0, fillOpacity = 1, dashArray ="4 6 2",
                    fillColor = "Blue") %>% 
       addPolygons(fillColor = ~pal_pop(Pop_Densit), color = "#444444", weight = 1, smoothFactor = 0.5,
-                  opacity = 0.1, fillOpacity = 0.9,
+                  opacity = 0.1, fillOpacity = 0.6,
                   label = HTML_labels(CUA5_Pop$Pop_Densit),
                   highlightOptions = highlightOptions(
                     weight = 5,
@@ -125,18 +141,25 @@ server <- function(input, output, session) {
       addLegend(title = "Population Density",position = "bottomleft", values = ~Pop_Densit,
                 pal = pal_pop,
                 labels = c("Very low", "Low", "Medium", "High", "Very high")
+                )  %>% 
+      addLayersControl(
+        baseGroups = c("Street Map (Default)", "Satellite Map"),
+        position = 'bottomleft',
+        options = layersControlOptions(collapsed = TRUE)
       )
   })
   
   
   output$population <- renderLeaflet({
     
-    leaflet(data = CUA5_Pop) %>% addProviderTiles(providers$Esri.WorldTopoMap) %>% 
+    leaflet(data = CUA5_Pop) %>%
+      addProviderTiles(providers$Esri.WorldTopoMap, group = "Street Map (Default)") %>% 
+      addProviderTiles(providers$Esri.WorldImagery, group = "Satellite Map") %>% 
       addPolylines(data = CUA5, color = "Black", weight = 3, smoothFactor = 0.5,
                    opacity = 1.0, fillOpacity = 1, dashArray ="4 6 2",
                    fillColor = "Blue") %>% 
     addPolygons(fillColor = ~pal_pop(Pop_Densit), color = "#444444", weight = 1, smoothFactor = 0.5,
-                opacity = 0.1, fillOpacity = 0.9,
+                opacity = 0.1, fillOpacity = 0.6,
                 label = HTML_labels(CUA5_Pop$Pop_Densit),
                 highlightOptions = highlightOptions(
                   weight = 5,
@@ -147,17 +170,24 @@ server <- function(input, output, session) {
       addLegend(title = "Population Density",position = "bottomleft", values = ~Pop_Densit,
                 pal = pal_pop,
                 labels = c("Very low", "Low", "Medium", "High", "Very high")
-                                                                 )
+                                                                 ) %>% 
+      addLayersControl(
+        baseGroups = c("Street Map (Default)", "Satellite Map"),
+        position = 'bottomleft',
+        options = layersControlOptions(collapsed = TRUE)
+      )
   })
   
   output$rivers <- renderLeaflet({
     
-    leaflet(data = CUA5_Rivers) %>% addProviderTiles(providers$Esri.WorldTopoMap) %>% 
+    leaflet(data = CUA5_Rivers) %>%
+      addProviderTiles(providers$Esri.WorldTopoMap, group = "Street Map (Default)") %>% 
+      addProviderTiles(providers$Esri.WorldImagery, group = "Satellite Map") %>% 
       addPolylines(data = CUA5, color = "Black", weight = 3, smoothFactor = 0.5,
                    opacity = 1.0, fillOpacity = 1, dashArray ="4 6 2",
                    fillColor = "Blue") %>% 
       addPolygons(fillColor = ~pal_riv(LENGTH), color = "#444444", weight = 1, smoothFactor = 0.5,
-                  opacity = 0.1, fillOpacity = 0.9, 
+                  opacity = 0.1, fillOpacity = 0.6, 
                   label = HTML_labels(CUA5_Rivers$LENGTH, "meters"),
                   highlightOptions = highlightOptions(
                     weight = 5,
@@ -167,17 +197,24 @@ server <- function(input, output, session) {
       addLegend(title = "River Density",position = "bottomleft",
                 values = ~LENGTH,pal = pal_riv,
                 labels = c("Very low", "Low", "Medium", "High", "Very high")
-                  )
+                  ) %>% 
+      addLayersControl(
+        baseGroups = c("Street Map (Default)", "Satellite Map"),
+        position = 'bottomleft',
+        options = layersControlOptions(collapsed = TRUE)
+      )
   })
   
   output$roads <- renderLeaflet({
     
-    leaflet(data = CUA5_Roads) %>% addProviderTiles(providers$Esri.WorldTopoMap) %>% 
+    leaflet(data = CUA5_Roads) %>%
+      addProviderTiles(providers$Esri.WorldTopoMap, group = "Street Map (Default)") %>% 
+      addProviderTiles(providers$Esri.WorldImagery, group = "Satellite Map") %>% 
       addPolylines(data = CUA5, color = "Black", weight = 3, smoothFactor = 0.5,
                    opacity = 1.0, fillOpacity = 1, dashArray ="4 6 2",
                    fillColor = "Blue") %>% 
       addPolygons(fillColor = ~pal_road(LENGTH), color = "#444444", weight = 1, smoothFactor = 0.5,
-                  opacity = 0.1, fillOpacity = 0.9,
+                  opacity = 0.1, fillOpacity = 0.6,
                   label = HTML_labels(CUA5_Roads$LENGTH/1000, "Kilometres"),
                   highlightOptions = highlightOptions(
                     weight = 5,
@@ -187,7 +224,12 @@ server <- function(input, output, session) {
       addLegend(title = "Road density",position = "bottomleft",
                   values = ~LENGTH,pal = pal_road,
                   labels = c("Very low", "Low", "Medium", "High", "Very high")
-                  )
+                  ) %>% 
+      addLayersControl(
+        baseGroups = c("Street Map (Default)", "Satellite Map"),
+        position = 'bottomleft',
+        options = layersControlOptions(collapsed = TRUE)
+      )
   })
   
   output$updates <- renderUI(HTML("<ul>
@@ -196,6 +238,9 @@ server <- function(input, output, session) {
   <li> 02/10/2019 - Added a new CUA5 shapefile based on an official source</li>
   <li>11/09/2019 - Created the first interactive version</li>
                                   </ul>"))
+  
+  output$home <- renderUI(HTML("<p> This microsite is a demonstration of our latest geospatial model focusing on the fifth arrondissement in the city of Antananarivo, the capital of Madagascar. You can see the visualisation of our latest risk formula and the source data that feeds into it.</p>
+                               <p>This demonstration uses sample sanitation data: this means it is not yet ready to be used for decision making. Any questions? Contact us at <a href = mailto:hello@gatherhub.org>hello@gatherhub.org</a></p>"))
 
 }
 

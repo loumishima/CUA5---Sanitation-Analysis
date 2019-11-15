@@ -20,6 +20,9 @@ body, label, input, button, select {
   margin-bottom: 5px;
   
 }
+#nav{
+  margin-left:30px;
+}
 .navbar {
   background-color: #B10048;
   color: white;
@@ -37,7 +40,7 @@ body, label, input, button, select {
   background-color: #B10048 ;
 }
 
-navbar-header{
+.navbar-header{
   color : white;
 }
 
