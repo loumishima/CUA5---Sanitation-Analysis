@@ -7,7 +7,7 @@ Geospatial data sets enrich our understanding of what happens where. We wanted t
 
 Most  non-sanitation (contextual) data sets for Antananarivo exist as images with limited location information. These need to be converted into shape files: they need to be georeferenced to ‘glue’ the image to a base map and then vectorised to add the data. 
 
-For more information on how we assessed and prepared non-sanitation data sets, check the [Geospatial Analysis section](link)
+For more information on how we assessed and prepared non-sanitation data sets, check the [Geospatial Analysis section](Images/Geospatial.md)
 
 ## Shiny App
 
